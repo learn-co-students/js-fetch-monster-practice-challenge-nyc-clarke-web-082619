@@ -46,9 +46,12 @@ document.addEventListener('DOMContentLoaded', function(){
         monster.name = document.getElementById('name').value;
         monster.age = document.getElementById('age').value;
         monster.description = document.getElementById('description').value;
-        monster.id = 'temp';
 
         if (monster.name !== "" && monster.age !== "" && monster.description !== ""){
+            let container = document.getElementById('monster-container')
+            while(container.firstChild){
+                container.removeChild(container.firstChild)
+            }
             renderMonster(monster);
             fetch('http://localhost:3000/monsters',{
                method: 'POST', 
@@ -64,9 +67,6 @@ document.addEventListener('DOMContentLoaded', function(){
            })
            .then(resp =>{
                return resp.json();
-           })
-           .then(resource =>{
-               document.getElementById('temp').setAttribute('id',resource.id);
            })
         }
     }
