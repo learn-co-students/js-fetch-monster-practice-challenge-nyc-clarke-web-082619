@@ -1,7 +1,6 @@
 const URL_PREFIX = 'http://localhost:3000';
 let page = 1;
 let pageNum = document.querySelector('#page-num');
-let lastPage = false;
 
 
 const monsterContainer = document.querySelector('#monster-container');
@@ -111,16 +110,13 @@ function displayMonsterCards(monsterArray){
 
 
 function pageUp(){
-    if(!lastPage){
-        page++;
-        pageNum.innerText = page;
-        getMonsters(undefined, page);
-    }
+    page++;
+    pageNum.innerText = page;
+    getMonsters(undefined, page);
 }
 
 function pageDown(){
     if (page > 1){
-        lastPage = false;
         page--;
         pageNum.innerText = page;
         getMonsters(undefined, page);
